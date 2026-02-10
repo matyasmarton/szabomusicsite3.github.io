@@ -53,22 +53,23 @@
         }
         
         /* Logo Carousel Animation */
-        @keyframes scroll-left {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-        
-        .logo-scroll {
-            animation: scroll-left 30s linear infinite;
-        }
-        
-        .logo-scroll:hover {
-            animation-play-state: paused;
-        }
+/* Logo Carousel Animation */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.logo-scroll {
+    animation: scroll-left 40s linear infinite;
+}
+
+.logo-scroll:hover {
+    animation-play-state: paused;
+}
     </style>
 </head>
 <body class="bg-background-dark text-slate-100 overflow-x-hidden selection:bg-accent selection:text-white">
@@ -83,10 +84,12 @@
                 <span class="text-white text-xl font-bold tracking-wide font-serif">Szabó Music Company</span>
             </div>
             <div class="hidden md:flex items-center gap-10">
-                <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#talent">Artists</a>
-                <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#musicians">Musicians</a>
-                <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#contact">Contact</a>
-            </div>
+    <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#home">Homepage</a>
+    <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#talent">Artists</a>
+    <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#musicians">Musicians</a>
+    <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#about">About Us</a>
+    <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#contact">Contact</a>
+</div>
             <button class="bg-accent/10 hover:bg-accent text-accent hover:text-background-dark border border-accent/30 hover:border-accent px-6 py-2 rounded-lg text-sm font-bold tracking-wide uppercase transition-all duration-500 hidden sm:block">
                 Book Talent
             </button>
@@ -139,25 +142,26 @@
         <div class="max-w-[1280px] mx-auto px-6 text-center mb-8">
             <p class="text-slate-500 uppercase tracking-[0.2em] text-xs font-bold">Trusted by the World's Finest Fleets</p>
         </div>
-        <div class="relative flex overflow-hidden">
-            <div class="logo-scroll flex items-center gap-16 px-8 whitespace-nowrap">
-                <!-- First Set of Logos -->
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Cunard_Line_logo.svg/320px-Cunard_Line_logo.svg.png" alt="Cunard Line" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Holland_America_Line_logo.svg/320px-Holland_America_Line_logo.svg.png" alt="Holland America" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/P%26O_Cruises_logo.svg/320px-P%26O_Cruises_logo.svg.png" alt="P&O Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Viking_Cruises_logo.svg/320px-Viking_Cruises_logo.svg.png" alt="Viking Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Celebrity_Cruises_logo.svg/320px-Celebrity_Cruises_logo.svg.png" alt="Celebrity Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Princess_Cruises_logo.svg/320px-Princess_Cruises_logo.svg.png" alt="Princess Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
-                
-                <!-- Duplicate Set for Seamless Loop -->
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Cunard_Line_logo.svg/320px-Cunard_Line_logo.svg.png" alt="Cunard Line" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Holland_America_Line_logo.svg/320px-Holland_America_Line_logo.svg.png" alt="Holland America" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/P%26O_Cruises_logo.svg/320px-P%26O_Cruises_logo.svg.png" alt="P&O Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Viking_Cruises_logo.svg/320px-Viking_Cruises_logo.svg.png" alt="Viking Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Celebrity_Cruises_logo.svg/320px-Celebrity_Cruises_logo.svg.png" alt="Celebrity Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Princess_Cruises_logo.svg/320px-Princess_Cruises_logo.svg.png" alt="Princess Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
-            </div>
-        </div>
+       <div class="relative flex overflow-hidden">
+    <div class="logo-scroll flex items-center gap-16 px-8 whitespace-nowrap">
+        <!-- First Set -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Cunard_Line_logo.svg/320px-Cunard_Line_logo.svg.png" alt="Cunard Line" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Holland_America_Line_logo.svg/320px-Holland_America_Line_logo.svg.png" alt="Holland America" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/P%26O_Cruises_logo.svg/320px-P%26O_Cruises_logo.svg.png" alt="P&O Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Viking_Cruises_logo.svg/320px-Viking_Cruises_logo.svg.png" alt="Viking Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Celebrity_Cruises_logo.svg/320px-Celebrity_Cruises_logo.svg.png" alt="Celebrity Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Princess_Cruises_logo.svg/320px-Princess_Cruises_logo.svg.png" alt="Princess Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
+    </div>
+    <div class="logo-scroll flex items-center gap-16 px-8 whitespace-nowrap" aria-hidden="true">
+        <!-- Duplicate Set -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Cunard_Line_logo.svg/320px-Cunard_Line_logo.svg.png" alt="Cunard Line" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Holland_America_Line_logo.svg/320px-Holland_America_Line_logo.svg.png" alt="Holland America" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/P%26O_Cruises_logo.svg/320px-P%26O_Cruises_logo.svg.png" alt="P&O Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Viking_Cruises_logo.svg/320px-Viking_Cruises_logo.svg.png" alt="Viking Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Celebrity_Cruises_logo.svg/320px-Celebrity_Cruises_logo.svg.png" alt="Celebrity Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Princess_Cruises_logo.svg/320px-Princess_Cruises_logo.svg.png" alt="Princess Cruises" class="h-12 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" style="filter: brightness(0) invert(1);">
+    </div>
+</div>
     </section>
 
     <!-- Featured Talent Section -->
