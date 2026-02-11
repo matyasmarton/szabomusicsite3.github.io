@@ -35,88 +35,137 @@
         }
     </script>
     <style>
-        body {
-            font-family: "Noto Sans", sans-serif;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: "Noto Serif", serif;
-        }
-        .text-accent-gradient {
-            background: linear-gradient(135deg, #E6D2A8 0%, #C9B07E 50%, #A68B5B 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-        }
-        .smooth-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        /* Logo Carousel Animation */
-/* Logo Carousel Animation */
-@keyframes scroll-left {
-    0% {
-        transform: translateX(0);
+    body {
+        font-family: "Noto Sans", sans-serif;
     }
-    100% {
-        transform: translateX(-100%);
+    h1, h2, h3, h4, h5, h6 {
+        font-family: "Noto Serif", serif;
     }
-}
+    .text-accent-gradient {
+        background: linear-gradient(135deg, #E6D2A8 0%, #C9B07E 50%, #A68B5B 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+    }
+    .smooth-hover {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Logo Carousel Animation */
+    @keyframes scroll-left {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
 
-.logo-scroll {
-    animation: scroll-left 40s linear infinite;
-}
+    .logo-scroll {
+        animation: scroll-left 40s linear infinite;
+    }
 
-.logo-scroll:hover {
-    animation-play-state: paused;
-}
-/* Dropdown smooth animation */
-.dropdown-menu {
-    transform: translateY(-10px);
-}
+    .logo-scroll:hover {
+        animation-play-state: paused;
+    }
 
-.group:hover .dropdown-menu {
-    transform: translateY(0);
-}
-    </style>
+    /* Dropdown smooth animation - Scoped to nav only */
+    .dropdown-menu {
+        transform: translateY(-10px);
+    }
+
+    nav .group:hover .dropdown-menu {
+        transform: translateY(0);
+    }
+    
+    /* Mobile Menu Styles - Scoped to prevent conflicts */
+    nav .mobile-nav-menu {
+        transition: max-height 0.3s ease-in-out;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 40;
+    }
+
+    nav .mobile-nav-menu.mobile-menu-active {
+        max-height: 600px;
+    }
+
+    nav .mobile-artists-expanded {
+        max-height: 200px;
+    }
+</style>
 </head>
 <body class="bg-background-dark text-slate-100 overflow-x-hidden selection:bg-accent selection:text-white">
-
-    <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 transition-all duration-300 bg-background-dark/80 backdrop-blur-md border-b border-white/5">
-        <div class="max-w-[1280px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="size-8 text-accent">
-                    <span class="material-symbols-outlined text-[32px]">anchor</span>
-                </div>
-                <span class="text-white text-xl font-bold tracking-wide font-serif">Szabó Music Company</span>
+<!-- Navbar -->
+<nav class="fixed top-0 w-full z-50 transition-all duration-300 bg-background-dark/80 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-[1280px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="size-8 text-accent">
+                <span class="material-symbols-outlined text-[32px]">anchor</span>
             </div>
-            <div class="hidden md:flex items-center gap-10">
-    <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#home">Homepage</a>
-    
-    <!-- Artists Dropdown -->
-    <div class="relative group">
-        <button class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover flex items-center gap-1">
-            Artists
-            <span class="material-symbols-outlined text-sm">expand_more</span>
-        </button>
-        <div class="absolute top-full left-0 mt-2 w-56 bg-background-card border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 dropdown-menu">
-            <a href="#talent" class="block px-6 py-3 text-slate-300 hover:text-accent hover:bg-white/5 transition-colors text-sm font-medium border-b border-white/5">Featured Talent</a>
-            <a href="#musicians" class="block px-6 py-3 text-slate-300 hover:text-accent hover:bg-white/5 transition-colors text-sm font-medium">Musicians</a>
+            <span class="text-white text-xl font-bold tracking-wide font-serif">Szabó Music Company</span>
         </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-10">
+            <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#home">Homepage</a>
+            
+            <!-- Artists Dropdown -->
+            <div class="relative group">
+                <button class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover flex items-center gap-1">
+                    Artists
+                    <span class="material-symbols-outlined text-sm">expand_more</span>
+                </button>
+                <div class="dropdown-menu absolute top-full left-0 mt-2 w-56 bg-background-card border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                    <a href="#talent" class="block px-6 py-3 text-slate-300 hover:text-accent hover:bg-white/5 transition-colors text-sm font-medium border-b border-white/5">Featured Talent</a>
+                    <a href="#musicians" class="block px-6 py-3 text-slate-300 hover:text-accent hover:bg-white/5 transition-colors text-sm font-medium">Musicians</a>
+                </div>
+            </div>
+            
+            <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#about">About Us</a>
+            <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#contact">Contact</a>
+        </div>
+        
+        <button class="bg-accent/10 hover:bg-accent text-accent hover:text-background-dark border border-accent/30 hover:border-accent px-6 py-2 rounded-lg text-sm font-bold tracking-wide uppercase transition-all duration-500 hidden sm:block">
+            Book Talent
+        </button>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-white">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
     </div>
     
-    <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#about">About Us</a>
-    <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#contact">Contact</a>
-</div>
-            <button class="bg-accent/10 hover:bg-accent text-accent hover:text-background-dark border border-accent/30 hover:border-accent px-6 py-2 rounded-lg text-sm font-bold tracking-wide uppercase transition-all duration-500 hidden sm:block">
+    <!-- Mobile Menu - INSIDE NAV -->
+    <div id="mobileMenu" class="mobile-nav-menu md:hidden bg-background-card/95 backdrop-blur-md border-t border-white/5 overflow-hidden max-h-0 transition-all duration-300 ease-in-out absolute top-full left-0 w-full">
+        <div class="px-6 py-6 space-y-4">
+            <a href="#home" class="block text-slate-300 hover:text-accent transition-colors text-base font-medium py-2">Homepage</a>
+            
+            <!-- Mobile Artists Dropdown -->
+            <div>
+                <button id="mobileArtistsToggle" class="w-full flex items-center justify-between text-slate-300 hover:text-accent transition-colors text-base font-medium py-2">
+                    Artists
+                    <span class="material-symbols-outlined text-sm transition-transform duration-300" id="mobileArtistsIcon">expand_more</span>
+                </button>
+                <div id="mobileArtistsMenu" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                    <div class="pl-4 pt-2 space-y-2">
+                        <a href="#talent" class="block text-slate-400 hover:text-accent transition-colors text-sm py-2">Featured Talent</a>
+                        <a href="#musicians" class="block text-slate-400 hover:text-accent transition-colors text-sm py-2">Musicians</a>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#about" class="block text-slate-300 hover:text-accent transition-colors text-base font-medium py-2">About Us</a>
+            <a href="#contact" class="block text-slate-300 hover:text-accent transition-colors text-base font-medium py-2">Contact</a>
+            
+            <button class="w-full bg-accent/10 hover:bg-accent text-accent hover:text-background-dark border border-accent/30 hover:border-accent px-6 py-3 rounded-lg text-sm font-bold tracking-wide uppercase transition-all duration-300 mt-4">
                 Book Talent
             </button>
-            <button id="mobileMenuBtn" class="md:hidden text-white">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Hero Section with Video Placeholder -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -538,98 +587,128 @@
     </footer>
 
     <script>
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-        // Gallery Modal System
-let currentImageIndex = 0;
-let galleryImages = [];
-
-function initGallery() {
-    // Collect all clickable images (add 'gallery-trigger' class to images you want to open in modal)
-    const triggers = document.querySelectorAll('.gallery-trigger');
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
     
-    triggers.forEach((img, index) => {
-        galleryImages.push({
-            src: img.src,
-            alt: img.alt || `Image ${index + 1}`
-        });
-        
-        img.style.cursor = 'pointer';
-        img.addEventListener('click', () => {
-            openGallery(index);
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('mobile-menu-active');
+    });
+    
+    // Mobile Artists Dropdown Toggle
+    const mobileArtistsToggle = document.getElementById('mobileArtistsToggle');
+    const mobileArtistsMenu = document.getElementById('mobileArtistsMenu');
+    const mobileArtistsIcon = document.getElementById('mobileArtistsIcon');
+    
+    mobileArtistsToggle.addEventListener('click', () => {
+        mobileArtistsMenu.classList.toggle('mobile-artists-expanded');
+        mobileArtistsIcon.style.transform = mobileArtistsMenu.classList.contains('mobile-artists-expanded') 
+            ? 'rotate(180deg)' 
+            : 'rotate(0deg)';
+    });
+    
+    // Close mobile menu when clicking on a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('mobile-menu-active');
+            // Also close artists submenu if open
+            mobileArtistsMenu.classList.remove('mobile-artists-expanded');
+            mobileArtistsIcon.style.transform = 'rotate(0deg)';
         });
     });
-}
 
-function openGallery(index) {
-    currentImageIndex = index;
-    const modal = document.getElementById('galleryModal');
-    const modalImage = document.getElementById('modalImage');
-    const counter = document.getElementById('imageCounter');
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
     
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-    
-    modalImage.src = galleryImages[currentImageIndex].src;
-    modalImage.alt = galleryImages[currentImageIndex].alt;
-    counter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
-}
+    // Gallery Modal System
+    let currentImageIndex = 0;
+    let galleryImages = [];
 
-function closeGallery() {
-    const modal = document.getElementById('galleryModal');
-    modal.classList.add('hidden');
-    document.body.style.overflow = 'auto';
-}
+    function initGallery() {
+        const triggers = document.querySelectorAll('.gallery-trigger');
+        
+        triggers.forEach((img, index) => {
+            galleryImages.push({
+                src: img.src,
+                alt: img.alt || `Image ${index + 1}`
+            });
+            
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => {
+                openGallery(index);
+            });
+        });
+    }
 
-function nextImage() {
-    currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
-    updateModalImage();
-}
-
-function previousImage() {
-    currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
-    updateModalImage();
-}
-
-function updateModalImage() {
-    const modalImage = document.getElementById('modalImage');
-    const counter = document.getElementById('imageCounter');
-    
-    modalImage.style.opacity = '0';
-    
-    setTimeout(() => {
+    function openGallery(index) {
+        currentImageIndex = index;
+        const modal = document.getElementById('galleryModal');
+        const modalImage = document.getElementById('modalImage');
+        const counter = document.getElementById('imageCounter');
+        
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        
         modalImage.src = galleryImages[currentImageIndex].src;
         modalImage.alt = galleryImages[currentImageIndex].alt;
         counter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
-        modalImage.style.opacity = '1';
-    }, 150);
-}
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-    const modal = document.getElementById('galleryModal');
-    if (!modal.classList.contains('hidden')) {
-        if (e.key === 'Escape') closeGallery();
-        if (e.key === 'ArrowRight') nextImage();
-        if (e.key === 'ArrowLeft') previousImage();
     }
-});
 
-// Initialize gallery on page load
-document.addEventListener('DOMContentLoaded', initGallery);
-    </script>
-    <!-- Gallery Carousel Modal -->
+    function closeGallery() {
+        const modal = document.getElementById('galleryModal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+        updateModalImage();
+    }
+
+    function previousImage() {
+        currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+        updateModalImage();
+    }
+
+    function updateModalImage() {
+        const modalImage = document.getElementById('modalImage');
+        const counter = document.getElementById('imageCounter');
+        
+        modalImage.style.opacity = '0';
+        
+        setTimeout(() => {
+            modalImage.src = galleryImages[currentImageIndex].src;
+            modalImage.alt = galleryImages[currentImageIndex].alt;
+            counter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+            modalImage.style.opacity = '1';
+        }, 150);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        const modal = document.getElementById('galleryModal');
+        if (!modal.classList.contains('hidden')) {
+            if (e.key === 'Escape') closeGallery();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') previousImage();
+        }
+    });
+
+    // Initialize gallery on page load
+    document.addEventListener('DOMContentLoaded', initGallery);
+</script>    <!-- Gallery Carousel Modal -->
 <div id="galleryModal" class="fixed inset-0 z-[9999] hidden">
     <!-- Backdrop -->
     <div class="absolute inset-0 bg-background-dark/95 backdrop-blur-md" onclick="closeGallery()"></div>
