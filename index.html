@@ -70,13 +70,13 @@
 .logo-scroll:hover {
     animation-play-state: paused;
 }
-
-        .group:hover .absolute {
-    transform: translateY(0);
+/* Dropdown smooth animation */
+.dropdown-menu {
+    transform: translateY(-10px);
 }
 
-.group .absolute {
-    transform: translateY(-10px);
+.group:hover .dropdown-menu {
+    transform: translateY(0);
 }
     </style>
 </head>
@@ -100,7 +100,7 @@
             Artists
             <span class="material-symbols-outlined text-sm">expand_more</span>
         </button>
-        <div class="absolute top-full left-0 mt-2 w-56 bg-background-card border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+        <div class="absolute top-full left-0 mt-2 w-56 bg-background-card border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 dropdown-menu">
             <a href="#talent" class="block px-6 py-3 text-slate-300 hover:text-accent hover:bg-white/5 transition-colors text-sm font-medium border-b border-white/5">Featured Talent</a>
             <a href="#musicians" class="block px-6 py-3 text-slate-300 hover:text-accent hover:bg-white/5 transition-colors text-sm font-medium">Musicians</a>
         </div>
