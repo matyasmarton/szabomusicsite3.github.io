@@ -70,6 +70,14 @@
 .logo-scroll:hover {
     animation-play-state: paused;
 }
+
+        .group:hover .absolute {
+    transform: translateY(0);
+}
+
+.group .absolute {
+    transform: translateY(-10px);
+}
     </style>
 </head>
 <body class="bg-background-dark text-slate-100 overflow-x-hidden selection:bg-accent selection:text-white">
@@ -85,8 +93,19 @@
             </div>
             <div class="hidden md:flex items-center gap-10">
     <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#home">Homepage</a>
-    <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#talent">Artists</a>
-    <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#musicians">Musicians</a>
+    
+    <!-- Artists Dropdown -->
+    <div class="relative group">
+        <button class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover flex items-center gap-1">
+            Artists
+            <span class="material-symbols-outlined text-sm">expand_more</span>
+        </button>
+        <div class="absolute top-full left-0 mt-2 w-56 bg-background-card border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+            <a href="#talent" class="block px-6 py-3 text-slate-300 hover:text-accent hover:bg-white/5 transition-colors text-sm font-medium border-b border-white/5">Featured Talent</a>
+            <a href="#musicians" class="block px-6 py-3 text-slate-300 hover:text-accent hover:bg-white/5 transition-colors text-sm font-medium">Musicians</a>
+        </div>
+    </div>
+    
     <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#about">About Us</a>
     <a class="text-slate-300 hover:text-accent text-sm font-medium uppercase tracking-widest smooth-hover" href="#contact">Contact</a>
 </div>
@@ -532,6 +551,116 @@
                 }
             });
         });
+        // Gallery Modal System
+let currentImageIndex = 0;
+let galleryImages = [];
+
+function initGallery() {
+    // Collect all clickable images (add 'gallery-trigger' class to images you want to open in modal)
+    const triggers = document.querySelectorAll('.gallery-trigger');
+    
+    triggers.forEach((img, index) => {
+        galleryImages.push({
+            src: img.src,
+            alt: img.alt || `Image ${index + 1}`
+        });
+        
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => {
+            openGallery(index);
+        });
+    });
+}
+
+function openGallery(index) {
+    currentImageIndex = index;
+    const modal = document.getElementById('galleryModal');
+    const modalImage = document.getElementById('modalImage');
+    const counter = document.getElementById('imageCounter');
+    
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    
+    modalImage.src = galleryImages[currentImageIndex].src;
+    modalImage.alt = galleryImages[currentImageIndex].alt;
+    counter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+}
+
+function closeGallery() {
+    const modal = document.getElementById('galleryModal');
+    modal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+}
+
+function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+    updateModalImage();
+}
+
+function previousImage() {
+    currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+    updateModalImage();
+}
+
+function updateModalImage() {
+    const modalImage = document.getElementById('modalImage');
+    const counter = document.getElementById('imageCounter');
+    
+    modalImage.style.opacity = '0';
+    
+    setTimeout(() => {
+        modalImage.src = galleryImages[currentImageIndex].src;
+        modalImage.alt = galleryImages[currentImageIndex].alt;
+        counter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+        modalImage.style.opacity = '1';
+    }, 150);
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('galleryModal');
+    if (!modal.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeGallery();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') previousImage();
+    }
+});
+
+// Initialize gallery on page load
+document.addEventListener('DOMContentLoaded', initGallery);
     </script>
+    <!-- Gallery Carousel Modal -->
+<div id="galleryModal" class="fixed inset-0 z-[9999] hidden">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-background-dark/95 backdrop-blur-md" onclick="closeGallery()"></div>
+    
+    <!-- Modal Content -->
+    <div class="relative h-full flex items-center justify-center p-6">
+        <!-- Close Button -->
+        <button onclick="closeGallery()" class="absolute top-6 right-6 w-12 h-12 bg-background-card/80 hover:bg-accent border border-white/10 hover:border-accent rounded-full flex items-center justify-center text-white hover:text-background-dark transition-all duration-300 z-50">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        
+        <!-- Previous Button -->
+        <button onclick="previousImage()" class="absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-background-card/80 hover:bg-accent border border-white/10 hover:border-accent rounded-full flex items-center justify-center text-white hover:text-background-dark transition-all duration-300 z-50">
+            <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        
+        <!-- Image Container -->
+        <div class="max-w-6xl max-h-[85vh] relative">
+            <img id="modalImage" src="" alt="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
+            
+            <!-- Image Counter -->
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-background-card/90 border border-white/10 px-4 py-2 rounded-full">
+                <span id="imageCounter" class="text-white text-sm font-medium">1 / 6</span>
+            </div>
+        </div>
+        
+        <!-- Next Button -->
+        <button onclick="nextImage()" class="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-background-card/80 hover:bg-accent border border-white/10 hover:border-accent rounded-full flex items-center justify-center text-white hover:text-background-dark transition-all duration-300 z-50">
+            <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+    </div>
+</div>
 </body>
 </html>
